@@ -1,0 +1,9 @@
+QML中，如何在外部设置子component的属性——QML的属性别名 property alias属性别名有什么作用？属性别名有点像C++中的引用，如果为一个属性定义别名以后，对别名的操作完全相当于对原属性的操作，这点相信大家都知道，但是在qml中这个别名到底有什么用？
+    如果我定义了一个Button.qml组件，然后在另外一个文件中使用这个Button组件 
+Rectangle{
+id:toolbar
+Button{
+ }
+
+}
+那么，如何访问Button组件下面的子元件的属性呢？这个时候，就应该在Button.qml中为Button定义一个属性，该属性是Button子组件属性的别名，然后就能像访问Button属性一样访问Button子组件的属性了

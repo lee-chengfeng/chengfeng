@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>CAnimation.qml</file>
+        <file>MainForm.ui.qml</file>
+        <file>image/desktop.jpg</file>
+    </qresource>
+</RCC>

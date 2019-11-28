@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MainForm.ui.qml</file>
+        <file>image/Flying_Whale_by_Shu_Le.jpg</file>
+    </qresource>
+</RCC>

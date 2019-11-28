@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>image/Hummingbird_by_Shu_Le.jpg</file>
+        <file>MainForm.ui.qml</file>
+    </qresource>
+</RCC>
