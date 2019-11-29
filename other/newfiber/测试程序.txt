@@ -1,0 +1,15 @@
+shareMemaryRead文件
+服务器文件
+客户端文件
+
+
+客户端与服务器之间的通讯通过套socket接字通讯（可选用select、epoll技术）基于UDP通讯
+
+
+shareMemaryRead文件与服务器之间通讯通过共享内存
+服务端开线程把客户端拿到的数据放到共享内存
+
+上传到GitHub，三个程序之间的活动图需要描绘出来
+
+客户端：QWidget
+服务器：QWidget
