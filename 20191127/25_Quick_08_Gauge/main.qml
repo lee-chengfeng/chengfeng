@@ -9,5 +9,9 @@ Window {
 
     MainForm{
         anchors.fill: parent
+        //注意button的onClicked使用.号调用
+        button1.onClicked: thermometer.value += 5
+        button2.onClicked: thermometer.value -= 5
     }
+
 }

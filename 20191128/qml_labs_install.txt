@@ -1,0 +1,35 @@
+﻿14:20:46: Starting /home/archermind/20191128/build-25_Quick_05_Dialogs-GCC-Debug/25_Quick_05_Dialogs...
+QML debugging is enabled. Only use this in a safe environment.
+QQmlApplicationEngine failed to load component
+qrc:/main.qml:5 module "Qt.labs.calendar" is not installed
+
+QFileSystemWatcher::removePaths: list is empty
+QFileSystemWatcher::removePaths: list is empty
+14:20:46: /home/archermind/20191128/build-25_Quick_05_Dialogs-GCC-Debug/25_Quick_05_Dialogs exited with code 255
+
+14:37:49: Starting /home/archermind/20191128/build-25_Quick_05_Dialogs-GCC-Debug/25_Quick_05_Dialogs...
+QML debugging is enabled. Only use this in a safe environment.
+QQmlApplicationEngine failed to load component
+qrc:/main.qml:36 Type FileDialog unavailable
+file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Dialogs/DefaultFileDialog.qml:47 module "Qt.labs.folderlistmodel" is not installed
+file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Dialogs/DefaultFileDialog.qml:48 module "Qt.labs.settings" is not installed
+file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Dialogs/DefaultFileDialog.qml:47 module "Qt.labs.folderlistmodel" is not installed
+file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Dialogs/DefaultFileDialog.qml:48 module "Qt.labs.settings" is not installed
+
+QFileSystemWatcher::removePaths: list is empty
+QFileSystemWatcher::removePaths: list is empty
+14:37:49: /home/archermind/20191128/build-25_Quick_05_Dialogs-GCC-Debug/25_Quick_05_Dialogs exited with code 255
+
+
+
+
+sudo apt install qml-module-qt-labs-calendar
+sudo apt install qml-module-qt-labs-folderlistmodel
+sudo apt install qml-module-qt-labs-settings
+安装完了之后需要重新启动Qt（最好电脑一起启动）
+
+
+
+//sudo apt install qml-module-qtquick-extras
+import QtQuick.Extras 1.4
+
