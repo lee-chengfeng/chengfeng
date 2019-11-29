@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>444</width>
+    <width>688</width>
     <height>275</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
      <rect>
       <x>30</x>
       <y>10</y>
-      <width>391</width>
+      <width>641</width>
       <height>161</height>
      </rect>
     </property>
@@ -30,8 +30,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>444</width>
-     <height>23</height>
+     <width>688</width>
+     <height>28</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -99,6 +99,9 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+X</string>
+   </property>
+   <property name="shortcutVisibleInContextMenu">
+    <bool>true</bool>
    </property>
   </action>
   <action name="actCopy">
@@ -338,38 +341,6 @@
     <hint type="destinationlabel">
      <x>165</x>
      <y>152</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actFontItalic</sender>
-   <signal>triggered(bool)</signal>
-   <receiver>txtEdit</receiver>
-   <slot>setFontItalic(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>225</x>
-     <y>137</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actFontUnder</sender>
-   <signal>triggered(bool)</signal>
-   <receiver>txtEdit</receiver>
-   <slot>setFontUnderline(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>225</x>
-     <y>137</y>
     </hint>
    </hints>
   </connection>

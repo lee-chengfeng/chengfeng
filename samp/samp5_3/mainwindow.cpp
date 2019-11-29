@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 
-void MainWindow::iniModelFromStringList(QStringList & aFileContent)// 生命 引用的 时候 不需要加 aFileContent
+void MainWindow::iniModelFromStringList(QStringList & aFileContent)// 声明引用的时候不需要加 aFileContent
 {
     int rowCnt = aFileContent.count();
     theModel->setRowCount(rowCnt-1);

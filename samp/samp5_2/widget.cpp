@@ -13,9 +13,8 @@ Widget::Widget(QWidget *parent) :
     theModel = new QStringListModel(this);
     theModel->setStringList(theStrList);
     ui->listView->setModel(theModel);
-
+    //设置编辑出发的条件，在双击、选择并点击这两种条件下可以对所选项进行编辑
     ui->listView->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
-    //设置编辑触发器，双击和点选
 }
 
 Widget::~Widget()
@@ -48,14 +47,17 @@ void Widget::on_btnAppend_clicked()
     theModel->setData(index,"new item",Qt::DisplayRole);
     ui->listView->setCurrentIndex(index);//这一句的含义是什么？选中当前新添加的行
 }
+//以下这种写法是把选中的覆盖了实现的插入，如何才能不覆盖就实现插入操作？
 void Widget::on_btnInsert_clicked()
 {
     QModelIndex index;
     index = ui->listView->currentIndex();
+    theModel->insertRow(index.row());//这里没有实现插入操作，所以直接覆盖所选的内容
     theModel->setData(index,"inserted item",Qt::DisplayRole);
     theModel->setData(index,Qt::AlignRight,Qt::TextAlignmentRole);//设置对齐方式？？？
      ui->listView->setCurrentIndex(index);
 }
+
 void Widget::on_btnDel_clicked()
 {
     QModelIndex index;

@@ -9,6 +9,8 @@ QWMainWind::QWMainWind(QWidget *parent) :
     iniUI();
     iniSignalSlots();
 }
+
+//在这里字体加粗的操函数在UI里面没有默认的，但是斜体或者下划线可以直接使用
 void QWMainWind::on_actFontBold_triggered(bool checked)
 {
     QTextCharFormat fmt;
@@ -18,6 +20,7 @@ void QWMainWind::on_actFontBold_triggered(bool checked)
     else
         fmt.setFontWeight(QFont::Normal);
     ui->txtEdit->mergeCurrentCharFormat(fmt);
+
 }
 
 void QWMainWind::on_txtEdit_copyAvalilable(bool b)
@@ -43,9 +46,24 @@ void QWMainWind::iniSignalSlots()
     //信号与槽的关联
     connect(spinFontSize,SIGNAL(valueChanged(int)),
             this,SLOT(on_spinBoxFontSize_valueChanged(int)));
-    connect(comboFont,SIGNAL(currentIndexChanged(const QSTRING &)),
-            this,SLOT(on_comboFont_currentIndexChanged(const QString &)));
-    connect(ui->actFontBold,SIGNAL(clienked(1)),this,SLOT(on_actFontBold_triggered(bool checked)));
+    //旧的信号与槽的写法
+    //这里之前调试一直不通过的原因是QString写成了QSTRING，老的写法里面把信号与槽函数转化为了字符串，没有类型检查，所以编译通过但是运行不正常
+    //connect(comboFont,SIGNAL(currentIndexChanged(const QString &)),
+    //this,SLOT(on_comboFont_currentIndexChanged(const QString &)));
+
+    /*第二种信号与槽的写法
+     * error: no matching function for call to ‘QWMainWind::connect(QFontComboBox*&, <unresolved overloaded function type>, QWMainWind*, void (QWMainWind::*)(const QString&))’
+        connect(comboFont,&QFontComboBox::currentIndexChanged,this,&QWMainWind::on_comboFont_currentIndexChanged);
+     * 重点，难点
+     *   这里QFontComboBox::currentIndexChanged函数被重载了，需要使用函数指针进行指定是哪个函数
+     *  void currentIndexChanged(int index)
+     *  void currentIndexChanged(const QString &)
+     */
+    void (QFontComboBox:: *point)(const QString &) = &QFontComboBox::currentIndexChanged;
+    connect(comboFont,point,this,&QWMainWind::on_comboFont_currentIndexChanged);
+
+    //这里使用connect链接没有效果，未找到其中原因
+    //connect(ui->actFontBold,SIGNAL(triggered(true)),this,SLOT(on_actFontBold_triggered(bool checked)));
 }
 
 void QWMainWind::on_spinBoxFontSize_valueChanged(int aFontSize)//改变字体的大小
@@ -64,6 +82,8 @@ void QWMainWind::on_comboFont_currentIndexChanged(const QString &arg1)
     fmt.setFontFamily(arg1);
     ui->txtEdit->mergeCurrentCharFormat(fmt);
 }
+
+
 
 void QWMainWind::iniUI()
 {
@@ -97,6 +117,28 @@ void QWMainWind::iniUI()
 
     setCentralWidget(ui->txtEdit);
 }
+//斜体、下划线使用信号与槽的机制实现，也可以在UI里面设置信号与槽，UI默认带斜体与下划线的信号与槽
+void QWMainWind::on_actFontItalic_triggered(bool checked){
+    QTextCharFormat fmt;
+    fmt = ui->txtEdit->currentCharFormat();
+    if(checked)
+        fmt.setFontItalic(true);
+    else
+        fmt.setFontItalic(false);
+    ui->txtEdit->mergeCurrentCharFormat(fmt);
+}
+
+void QWMainWind::on_actFontUnder_triggered(bool checked){
+    QTextCharFormat fmt;
+    fmt = ui->txtEdit->currentCharFormat();
+    if(checked)
+        fmt.setFontUnderline(true);
+    else
+        fmt.setFontUnderline(false);
+    ui->txtEdit->mergeCurrentCharFormat(fmt);
+}
+
+
 QWMainWind::~QWMainWind()
 {
     delete ui;
